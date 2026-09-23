@@ -1,14 +1,14 @@
 import objetos.*
 describe "tests" {
   test "inicio" {
-    //pelota.position(game.at(0, 7))
-    //assert.notThat(pelota.position())
+    const origen = game.at(0,5)
+    assert.notEquals(origen, pelota.position())
     pelota.inicio()
-    assert.equals(game.at(0, 5), pelota.position())
+    assert.equals(origen, pelota.position())
   }
 
   test "buscar" {
-    pelota.inicio()
+    assert.notEquals(pelota.position(), lionel.position())
     lionel.buscar()
     assert.equals(pelota.position(), lionel.position())
   }
