@@ -1,0 +1,17 @@
+import objetos.*
+
+describe "tests de futbolito" {
+
+    test "buscar pelota" {
+        assert.notEquals(pelota.position(), lionel.position())
+        lionel.buscar()
+        assert.equals(pelota.position(), lionel.position())
+    }
+
+    test "inicio" {
+        const origen = game.at(0,5)
+        assert.notEquals(origen, pelota.position())
+        pelota.inicio()
+        assert.equals(origen, pelota.position())
+    }
+}
