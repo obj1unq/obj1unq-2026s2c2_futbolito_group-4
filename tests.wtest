@@ -1,4 +1,6 @@
 import objetos.*
+
+
 describe "tests" {
   test "inicio" {
     const origen = game.at(0,5)
@@ -11,5 +13,15 @@ describe "tests" {
     assert.notEquals(pelota.position(), lionel.position())
     lionel.buscar()
     assert.equals(pelota.position(), lionel.position())
+  }
+
+  test "patear" {
+    game.addVisual(lionel)
+    game.addVisual(pelota)
+    pelota.inicio()
+    lionel.buscar()
+    const posicionEsperada = game.at(3,5)
+    lionel.patear()
+    assert.equals(posicionEsperada, pelota.position())
   }
 }

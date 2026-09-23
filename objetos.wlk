@@ -20,6 +20,22 @@ object lionel {
 	method buscar() {
 		position = objetivo.position()
 	}
+
+	method patear() {
+		self.validarPelotaEnPosicion()
+		objetivo.efectoPorSerPateada()
+	}
+
+	method validarPelotaEnPosicion() {
+		if(!self.hayPelotaAca()){
+			self.error("Acá no hay ninguna pelota para patear...")
+		}
+	}
+
+	method hayPelotaAca() {
+	  //return game.uniqueCollider(self) == pelota
+	  	return game.colliders(self).contains(pelota)
+	}
 }
 
 
@@ -29,5 +45,11 @@ object pelota {
 
 	method inicio(){
 		position = game.at(0, 5)
+	}
+
+	method efectoPorSerPateada() {
+		const xFinal = game.width() - 1
+		const distancia = position.x() + 3
+	    position = game.at(distancia.min(xFinal), position.y())
 	}
 }
