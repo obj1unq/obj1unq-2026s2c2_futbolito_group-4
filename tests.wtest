@@ -1,0 +1,15 @@
+import objetos.*
+describe "tests" {
+  test "inicio" {
+    //pelota.position(game.at(0, 7))
+    //assert.notThat(pelota.position())
+    pelota.inicio()
+    assert.equals(game.at(0, 5), pelota.position())
+  }
+
+  test "buscar" {
+    pelota.inicio()
+    lionel.buscar()
+    assert.equals(pelota.position(), lionel.position())
+  }
+}
