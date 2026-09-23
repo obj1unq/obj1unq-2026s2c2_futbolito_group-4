@@ -4,9 +4,10 @@ import wollok.game.*
 object lionel {
 	var property position = game.at(3,5)
 	const objetivo = pelota
-	
+	var esTitular = true
+
 	method image() {
-		return "lionel-titular.png"
+		return if(esTitular) { "lionel-titular.png" } else { "lionel-suplente.png" }
 	}
 
 	method retroceder() {
@@ -40,9 +41,15 @@ object lionel {
 		self.validarPelotaEnPosicion()
 		objetivo.efectoPorSerTaqueteada()
 	}
-	/*method cambiarCamiseta(){
-
-	}*/
+	method cambiarCamiseta(){
+		self.validarCambiarmiseta()
+		esTitular = !esTitular
+	}
+	method validarCambiarmiseta(){ 
+		if (position.x() != 0) { 
+			self.error("Lionel solo puede cambiarse la camiseta si está sobre el borde izquierdo") 
+			} 
+		}
 }
 
 
@@ -64,4 +71,6 @@ object pelota {
 		const nuevoX = 0.max(position.x() - 2) 
 		position = game.at(nuevoX, position.y())
 	}
-}
+	
+ }
+

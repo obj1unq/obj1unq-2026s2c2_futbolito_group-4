@@ -33,4 +33,15 @@ describe "tests" {
     lionel.taquito()
     assert.equals(posicionEsperada, pelota.position())
   }
+  test "cambiar camiseta" { 
+    lionel.position(game.at(0, 5))
+    assert.equals("lionel-titular.png", lionel.image()) 
+    lionel.cambiarCamiseta() 
+    assert.equals("lionel-suplente.png", lionel.image())
+    lionel.cambiarCamiseta() 
+    assert.equals("lionel-titular.png", lionel.image()) 
+
+    lionel.position(game.at(2, 5)) 
+    assert.throwsException({ lionel.cambiarCamiseta() })
+    }
 }
