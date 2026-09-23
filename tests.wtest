@@ -24,4 +24,13 @@ describe "tests" {
     lionel.patear()
     assert.equals(posicionEsperada, pelota.position())
   }
+  test "taquito" {
+    game.addVisual(lionel)
+    game.addVisual(pelota)
+    pelota.inicio()
+    lionel.buscar()
+    const posicionEsperada = game.at(0,5)
+    lionel.taquito()
+    assert.equals(posicionEsperada, pelota.position())
+  }
 }

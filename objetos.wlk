@@ -36,6 +36,13 @@ object lionel {
 	  //return game.uniqueCollider(self) == pelota
 	  	return game.colliders(self).contains(pelota)
 	}
+	method taquito() {
+		self.validarPelotaEnPosicion()
+		objetivo.efectoPorSerTaqueteada()
+	}
+	/*method cambiarCamiseta(){
+
+	}*/
 }
 
 
@@ -51,5 +58,10 @@ object pelota {
 		const xFinal = game.width() - 1
 		const distancia = position.x() + 3
 	    position = game.at(distancia.min(xFinal), position.y())
+	}
+
+	method efectoPorSerTaqueteada() {
+		const nuevoX = 0.max(position.x() - 2) 
+		position = game.at(nuevoX, position.y())
 	}
 }
